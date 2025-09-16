@@ -1,1 +1,678 @@
-# -1
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Magssory Disc Signature Edition</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Model Viewer -->
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  
+  <style>
+    /* Apple-style custom styles */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    .apple-gradient {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    
+    .glass-effect {
+      backdrop-filter: blur(20px);
+      background: #212529;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .hero-text {
+      background: linear-gradient(135deg, #1a1a1a 0%, #4a4a4a 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .smooth-transition {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .apple-button {
+      background: #343a40;
+      border-radius: 980px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      transition: all 0.2s ease;
+    }
+    
+    .apple-button:hover {
+      background: #495057;
+      transform: translateY(-1px);
+      box-shadow: 0 10px 25px rgba(52, 58, 64, 0.3);
+    }
+    
+    .apple-button-secondary {
+      background: transparent;
+      border: 1px solid #343a40;
+      color: #343a40;
+      border-radius: 980px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      transition: all 0.2s ease;
+    }
+    
+    .apple-button-secondary:hover {
+      background: #343a40;
+      color: white;
+      transform: translateY(-1px);
+      box-shadow: 0 10px 25px rgba(52, 58, 64, 0.2);
+    }
+    
+    .feature-card {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 20px;
+      transition: all 0.3s ease;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+    
+    .section-padding {
+      padding: 120px 0;
+    }
+    
+    .nav-hidden {
+      transform: translateY(-100%);
+    }
+    
+    .nav-visible {
+      transform: translateY(0);
+    }
+    
+    .image-carousel {
+      position: relative;
+      overflow: hidden;
+      border-radius: 24px;
+    }
+    
+    .carousel-container {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+    
+    .carousel-slide {
+      min-width: 100%;
+      flex-shrink: 0;
+    }
+    
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 16px;
+    }
+    
+    .carousel-dot {
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: #d1d5db;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .carousel-dot.active {
+      background: #6b7280;
+      transform: scale(1.2);
+    }
+    
+    .carousel-nav-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.9);
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 10;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .carousel-nav-button:hover {
+      background: rgba(255, 255, 255, 1);
+      transform: translateY(-50%) scale(1.1);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .carousel-nav-button.prev {
+      left: 10px;
+    }
+    
+    .carousel-nav-button.next {
+      right: 10px;
+    }
+    
+    @media (max-width: 768px) {
+      .section-padding {
+        padding: 80px 0;
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-white text-gray-900">
+  <!-- Навигация -->
+  <nav id="navbar" class="fixed top-0 w-full z-50 glass-effect nav-visible smooth-transition">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex items-center">
+          <img src="images/logo.png" alt="Magssory" class="h-8" />
+        </div>
+        <div class="hidden md:flex items-center space-x-8 font-mono">
+          <a href="#product" class="text-white hover:text-gray-300 smooth-transition font-medium">Продукт</a>
+          <a href="#features" class="text-white hover:text-gray-300 smooth-transition font-medium">Особенности</a>
+          <a href="#reviews" class="text-white hover:text-gray-300 smooth-transition font-medium">Отзывы</a>
+          <a href="#faq" class="text-white hover:text-gray-300 smooth-transition font-medium">Поддержка</a>
+        </div>
+        <button class="apple-button text-white px-6 py-2 text-sm font-medium">
+          Купить
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <section id="product" class="section-padding pt-32 bg-gradient-to-br from-gray-50 to-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="space-y-8">
+          <div class="space-y-4">
+            <h1 class="text-5xl lg:text-7xl font-bold leading-tight text-gray-900">
+              Magssory Disc
+            </h1>
+            <h2 class="text-3xl lg:text-4xl font-light text-gray-600">
+              Signature Edition 3-в-1
+            </h2>
+          </div>
+          
+          <p class="text-xl lg:text-2xl text-gray-600 font-light leading-relaxed">
+            Элегантное решение для зарядки всех ваших Apple устройств. 
+            Создано для тех, кто ценит совершенство в каждой детали.
+          </p>
+          
+          <div class="flex flex-col sm:flex-row gap-4">
+            <button class="apple-button text-white px-8 py-4 text-lg font-medium">
+              Купить за 16 990 ₽
+            </button>
+            <button class="apple-button-secondary px-8 py-4 text-lg font-medium">
+              О товаре
+            </button>
+          </div>
+          
+          <div class="flex items-center space-x-4 text-sm text-gray-500">
+            <div class="flex items-center">
+              <div class="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
+              В наличии
+            </div>
+            <span>•</span>
+            <span>Бесплатная доставка</span>
+            <span>•</span>
+            <span>Гарантия 12 месяцев</span>
+          </div>
+        </div>
+        
+        <div class="flex justify-center lg:justify-end">
+          <div class="w-full h-screen">
+            <model-viewer
+              src="models/зарядка.glb"
+              alt="Magssory Disc Signature Edition"
+              auto-rotate
+              camera-controls
+              class="w-full h-full rounded-4xl">
+            </model-viewer>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="section-padding bg-gray-50">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="text-center mb-20">
+        <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+          Больше, чем просто зарядка
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          Каждая деталь Magssory Disc создана с вниманием к совершенству, 
+          объединяя передовые технологии с изысканным дизайном.
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="feature-card p-8 text-center">
+          <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg class="w-8 h-8 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-4">Быстрая зарядка</h3>
+          <p class="text-gray-600">До 22 Вт мощности для максимально быстрой зарядки всех устройств</p>
+        </div>
+        
+        <div class="feature-card p-8 text-center">
+          <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg class="w-8 h-8 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-4">3 устройства</h3>
+          <p class="text-gray-600">iPhone, Apple Watch и AirPods заряжаются одновременно</p>
+        </div>
+        
+        <div class="feature-card p-8 text-center">
+          <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg class="w-8 h-8 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-4">Премиум материалы</h3>
+          <p class="text-gray-600">Натуральная кожа, цинковый сплав и магниты N52</p>
+        </div>
+        
+        <div class="feature-card p-8 text-center">
+          <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg class="w-8 h-8 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-4">Портативность</h3>
+          <p class="text-gray-600">Складной дизайн идеален для путешествий и командировок</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Details -->
+  <section class="section-padding">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="space-y-8">
+          <h2 class="text-4xl lg:text-5xl font-bold text-gray-900">
+            Каждая деталь имеет значение
+          </h2>
+          <p class="text-xl text-gray-600 leading-relaxed">
+            Magssory Disc — это не просто зарядное устройство. Это воплощение философии Apple 
+            в мире аксессуаров: простота, элегантность и безупречная функциональность.
+          </p>
+          
+          <div class="space-y-6">
+            <div class="flex items-start space-x-4">
+              <div class="w-4 h-4 bg-gray-500 rounded-full flex-shrink-0 mt-1"></div>
+              <div>
+                <h4 class="font-semibold text-lg mb-2">Премиальный кожаный кейс</h4>
+                <p class="text-gray-600">Защищает устройство и подчеркивает ваш статус</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start space-x-4">
+              <div class="w-4 h-4 bg-gray-500 rounded-full flex-shrink-0 mt-1"></div>
+              <div>
+                <h4 class="font-semibold text-lg mb-2">Магнитный кабель 1.2м</h4>
+                <p class="text-gray-600">Надежное соединение и элегантный дизайн</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start space-x-4">
+              <div class="w-4 h-4 bg-gray-500 rounded-full flex-shrink-0 mt-1"></div>
+              <div>
+                <h4 class="font-semibold text-lg mb-2">Адаптер GaN 30 Вт</h4>
+                <p class="text-gray-600">Компактный и мощный для быстрой зарядки</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start space-x-4">
+              <div class="w-4 h-4 bg-gray-500 rounded-full flex-shrink-0 mt-1"></div>
+              <div>
+                <h4 class="font-semibold text-lg mb-2">Регулируемый угол</h4>
+                <p class="text-gray-600">Идеальный обзор для работы и развлечений</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="relative">
+          <div class="image-carousel">
+            <div class="carousel-container" id="carouselContainer">
+              <div class="carousel-slide">
+                <img src="images/details2.png" alt="Детали Magssory Disc" 
+                     class="w-full h-50 object-cover" />
+              </div>
+              <div class="carousel-slide">
+                <img src="images/details3.png" alt="Кожаный кейс" 
+                     class="w-full h-50 object-cover" />
+              </div>
+              <div class="carousel-slide">
+                <img src="images/details4.png" alt="Магнитный кабель" 
+                     class="w-full h-50 object-cover" />
+              </div>
+              <div class="carousel-slide">
+                <img src="images/details5.png" alt="Адаптер GaN" 
+                     class="w-full h-50 object-cover" />
+              </div>
+            </div>
+            
+            <!-- Navigation buttons -->
+            <button class="carousel-nav-button prev" id="prevButton">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M15 18l-6-6 6-6"/>
+              </svg>
+            </button>
+            <button class="carousel-nav-button next" id="nextButton">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 18l6-6-6-6"/>
+              </svg>
+            </button>
+          </div>
+          <div class="carousel-dots" id="carouselDots">
+            <div class="carousel-dot active" data-slide="0"></div>
+            <div class="carousel-dot" data-slide="1"></div>
+            <div class="carousel-dot" data-slide="2"></div>
+            <div class="carousel-dot" data-slide="3"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews Section -->
+  <section id="reviews" class="section-padding bg-gray-900">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="text-center mb-20">
+        <h2 class="text-4xl lg:text-5xl font-bold text-white mb-6">
+          Что говорят наши клиенты
+        </h2>
+        <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+          Присоединяйтесь к тысячам довольных пользователей по всему миру
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-gray-800 rounded-3xl p-8 border border-gray-700">
+          <div class="flex items-center mb-6">
+            <div class="flex text-yellow-400 text-xl">
+              ★★★★★
+            </div>
+          </div>
+          <blockquote class="text-lg text-gray-300 mb-6 leading-relaxed">
+            "Это не просто зарядка — это произведение искусства. Каждая деталь ощущается премиальной, 
+            а качество сборки превосходит все ожидания."
+          </blockquote>
+          <div class="flex items-center">
+            <div class="w-12 h-12 bg-gray-600 rounded-full mr-4"></div>
+            <div>
+              <div class="font-semibold text-white">Антон Петров</div>
+              <div class="text-gray-400">Москва</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-gray-800 rounded-3xl p-8 border border-gray-700">
+          <div class="flex items-center mb-6">
+            <div class="flex text-yellow-400 text-xl">
+              ★★★★★
+            </div>
+          </div>
+          <blockquote class="text-lg text-gray-300 mb-6 leading-relaxed">
+            "Наконец-то аксессуар для Apple, который соответствует уровню бренда. 
+            Дизайн безупречен, а функциональность превосходна."
+          </blockquote>
+          <div class="flex items-center">
+            <div class="w-12 h-12 bg-gray-600 rounded-full mr-4"></div>
+            <div>
+              <div class="font-semibold text-white">Мария Иванова</div>
+              <div class="text-gray-400">Санкт-Петербург</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq" class="section-padding">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8">
+      <div class="text-center mb-20">
+        <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+          Часто задаваемые вопросы
+        </h2>
+      </div>
+      
+      <div class="space-y-8">
+        <div class="border-b border-gray-200 pb-8">
+          <h3 class="text-xl font-semibold text-gray-900 mb-4">
+            Совместимо ли устройство с Android?
+          </h3>
+          <p class="text-gray-600 text-lg leading-relaxed">
+            Да, зарядная станция поддерживает универсальные протоколы Qi, PD и QC, 
+            что делает её совместимой с большинством современных смартфонов и устройств.
+          </p>
+        </div>
+        
+        <div class="border-b border-gray-200 pb-8">
+          <h3 class="text-xl font-semibold text-gray-900 mb-4">
+            Есть ли защита от перегрева?
+          </h3>
+          <p class="text-gray-600 text-lg leading-relaxed">
+            Да, встроенные интеллектуальные системы контроля температуры и тока 
+            обеспечивают безопасную зарядку и защищают ваши устройства от перегрева.
+          </p>
+        </div>
+        
+        <div class="border-b border-gray-200 pb-8">
+          <h3 class="text-xl font-semibold text-gray-900 mb-4">
+            Какая гарантия предоставляется?
+          </h3>
+          <p class="text-gray-600 text-lg leading-relaxed">
+            Мы предоставляем 12 месяцев официальной гарантии с возможностью 
+            бесплатного ремонта или замены в случае производственного брака.
+          </p>
+        </div>
+        
+        <div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-4">
+            Как быстро происходит доставка?
+          </h3>
+          <p class="text-gray-600 text-lg leading-relaxed">
+            Бесплатная доставка по России занимает 1-3 рабочих дня. 
+            Для Москвы и Санкт-Петербурга доступна экспресс-доставка в день заказа.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section-padding bg-gradient-to-r from-gray-700 to-gray-900">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+      <h2 class="text-4xl lg:text-5xl font-bold text-white mb-6">
+        Готовы к совершенству?
+      </h2>
+      <p class="text-xl text-gray-300 mb-10 leading-relaxed">
+        Присоединяйтесь к тысячам довольных пользователей и откройте для себя 
+        новый уровень удобства зарядки ваших Apple устройств.
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <button class="bg-white text-gray-800 px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-100 smooth-transition">
+          Купить сейчас за 16 990 ₽
+        </button>
+        <button class="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-gray-800 smooth-transition">
+          Связаться с нами
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-16">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid md:grid-cols-4 gap-8 mb-12">
+        <div>
+          <img src="images/logo.png" alt="Magssory" class="h-8 mb-6" />
+          <p class="text-gray-400 leading-relaxed">
+            Создаем премиальные аксессуары для Apple устройств с вниманием к каждой детали.
+          </p>
+        </div>
+        
+        <div>
+          <h4 class="font-semibold mb-4">Продукты</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="#" class="hover:text-white smooth-transition">Зарядные станции</a></li>
+            <li><a href="#" class="hover:text-white smooth-transition">Аксессуары</a></li>
+            <li><a href="#" class="hover:text-white smooth-transition">Кабели</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="font-semibold mb-4">Поддержка</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="#" class="hover:text-white smooth-transition">Гарантия</a></li>
+            <li><a href="#" class="hover:text-white smooth-transition">Доставка</a></li>
+            <li><a href="#" class="hover:text-white smooth-transition">Возврат</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="font-semibold mb-4">Контакты</h4>
+          <div class="flex space-x-4">
+            <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gray-700 smooth-transition">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+              </svg>
+            </a>
+            <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gray-700 smooth-transition">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001 12.017.001z"/>
+              </svg>
+            </a>
+            <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gray-700 smooth-transition">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <p class="text-gray-400 text-sm">
+          © 2025 Magssory. Все права защищены.
+        </p>
+        <div class="flex space-x-6 mt-4 md:mt-0 text-sm text-gray-400">
+          <a href="#" class="hover:text-white smooth-transition">Политика конфиденциальности</a>
+          <a href="#" class="hover:text-white smooth-transition">Условия использования</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Navigation hide/show on scroll
+    let lastScrollTop = 0;
+    const navbar = document.getElementById('navbar');
+    
+    window.addEventListener('scroll', function() {
+      let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      
+      if (scrollTop > lastScrollTop && scrollTop > 100) {
+        // Scrolling down - hide navbar
+        navbar.classList.remove('nav-visible');
+        navbar.classList.add('nav-hidden');
+      } else {
+        // Scrolling up - show navbar
+        navbar.classList.remove('nav-hidden');
+        navbar.classList.add('nav-visible');
+      }
+      
+      lastScrollTop = scrollTop;
+    });
+
+    // Image carousel functionality
+    let currentSlide = 0;
+    const carouselContainer = document.getElementById('carouselContainer');
+    const carouselDots = document.getElementById('carouselDots');
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dots = document.querySelectorAll('.carousel-dot');
+    
+    function showSlide(index) {
+      currentSlide = index;
+      const translateX = -index * 100;
+      carouselContainer.style.transform = `translateX(${translateX}%)`;
+      
+      // Update dots
+      dots.forEach((dot, i) => {
+        if (i === index) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
+    }
+    
+    // Add click event to dots
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        showSlide(index);
+      });
+    });
+    
+    // Add click events to navigation buttons
+    const prevButton = document.getElementById('prevButton');
+    const nextButton = document.getElementById('nextButton');
+    
+    prevButton.addEventListener('click', () => {
+      currentSlide = currentSlide === 0 ? slides.length - 1 : currentSlide - 1;
+      showSlide(currentSlide);
+    });
+    
+    nextButton.addEventListener('click', () => {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    });
+    
+    // Auto-advance carousel every 5 seconds
+    setInterval(() => {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }, 5000);
+  </script>
+</body>
+</html>
