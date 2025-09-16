@@ -180,7 +180,7 @@
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="flex justify-between items-center h-16">
         <div class="flex items-center">
-          <img src="images/logo.png" alt="Magssory" class="h-8" />
+          <img src="logo.png" alt="Magssory" class="h-8" />
         </div>
         <div class="hidden md:flex items-center space-x-8 font-mono">
           <a href="#product" class="text-white hover:text-gray-300 smooth-transition font-medium">Продукт</a>
@@ -237,7 +237,7 @@
         <div class="flex justify-center lg:justify-end">
           <div class="w-full h-screen">
             <model-viewer
-              src="models/зарядка.glb"
+              src="зарядка.glb"
               alt="Magssory Disc Signature Edition"
               auto-rotate
               camera-controls
@@ -358,19 +358,19 @@
           <div class="image-carousel">
             <div class="carousel-container" id="carouselContainer">
               <div class="carousel-slide">
-                <img src="images/details2.png" alt="Детали Magssory Disc" 
+                <img src="details2.png" alt="Детали Magssory Disc" 
                      class="w-full h-50 object-cover" />
               </div>
               <div class="carousel-slide">
-                <img src="images/details3.png" alt="Кожаный кейс" 
+                <img src="details3.png" alt="Кожаный кейс" 
                      class="w-full h-50 object-cover" />
               </div>
               <div class="carousel-slide">
-                <img src="images/details4.png" alt="Магнитный кабель" 
+                <img src="details4.png" alt="Магнитный кабель" 
                      class="w-full h-50 object-cover" />
               </div>
               <div class="carousel-slide">
-                <img src="images/details5.png" alt="Адаптер GaN" 
+                <img src="details5.png" alt="Адаптер GaN" 
                      class="w-full h-50 object-cover" />
               </div>
             </div>
